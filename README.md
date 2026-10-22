@@ -70,14 +70,13 @@ Configure the database connection in `database/DBConnection.java` to use:
 - **Host:** `127.0.0.1`
 - **Port:** `3306`
 
-Set the database password using the environment variable expected by `DBConnection.java`. Do not commit passwords or other credentials to the repository.
-
+Set the database password using the environment variable expected by `DBConnection.java`. 
 Ensure that MySQL Connector/J and FlatLaf are available on the project's classpath or module path.
 
 ## Running the Application
 
-1. Clone or download this repository.
-2. Open or import the project into Eclipse.
+1. Download this repository.
+2. Import the project into Eclipse.
 3. Configure the JDK and required libraries.
 4. Set up the MySQL database and connection credentials.
 5. Run the main class containing the application's `main()` method.
