@@ -20,7 +20,6 @@ public class RentalDAO {
     private static final double RENTAL_RATE_PER_DAY = 20.0;
     private static final double OVERDUE_FINE_PER_DAY = 10.0;
 
-    // Rent a book using the customer name and book title.
     public void rentBook(String customerName, String bookTitle,
                          int rentalDays) throws SQLException {
 
@@ -61,12 +60,6 @@ public class RentalDAO {
                         }
 
                         customerId = rs.getInt("customer_id");
-
-                        if (rs.next()) {
-                            throw new SQLException(
-                                    "Multiple customers have this name. "
-                                  + "Please ensure customer names are unique.");
-                        }
                     }
                 }
 
@@ -93,12 +86,6 @@ public class RentalDAO {
                         if (rs.getInt("stock") <= 0) {
                             throw new SQLException(
                                     "This book is currently unavailable.");
-                        }
-
-                        if (rs.next()) {
-                            throw new SQLException(
-                                    "Multiple books have this title. "
-                                  + "Please ensure book titles are unique.");
                         }
                     }
                 }
@@ -154,7 +141,6 @@ public class RentalDAO {
         }
     }
 
-    // Retrieve all rentals, including customer and book names.
     public List<Rental> getAllRentals() throws SQLException {
 
         List<Rental> rentals = new ArrayList<>();
@@ -198,7 +184,6 @@ public class RentalDAO {
         return rentals;
     }
 
-    // Return a rented book and calculate any overdue fine.
     public double returnBook(int rentalId) throws SQLException {
 
         try (Connection con =
