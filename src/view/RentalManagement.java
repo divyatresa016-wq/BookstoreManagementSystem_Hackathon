@@ -39,7 +39,6 @@ public class RentalManagement extends JFrame {
         setLocationRelativeTo(null);
         setLayout(new BorderLayout(10, 10));
 
-        // Rental charges information
         JPanel chargesPanel = new JPanel(new GridLayout(1, 2, 10, 0));
         chargesPanel.setBackground(new Color(248, 247, 241));
         chargesPanel.setBorder(
@@ -64,8 +63,6 @@ public class RentalManagement extends JFrame {
         chargesPanel.add(rentalRateLabel);
         chargesPanel.add(overdueFineLabel);
 
-
-        // Rental form
         JPanel formPanel = new JPanel(new GridLayout(3, 2, 8, 8));
         formPanel.setBackground(new Color(248, 247, 241));
         formPanel.setBorder(BorderFactory.createCompoundBorder(
@@ -94,7 +91,6 @@ public class RentalManagement extends JFrame {
 
         add(topPanel, BorderLayout.NORTH);
 
-        // Rental records table
         tableModel = new DefaultTableModel(
                 new String[]{
                         "Rental ID", "Customer", "Book",
@@ -150,7 +146,6 @@ public class RentalManagement extends JFrame {
 
         add(scrollPane, BorderLayout.CENTER);
 
-        // Action buttons
         JPanel buttonPanel = new JPanel(new FlowLayout());
 
         JButton rentButton = new JButton("Rent Book");
@@ -175,7 +170,6 @@ public class RentalManagement extends JFrame {
         loadRentals();
     }
 
-    // Load customer names into the dropdown
     private void loadCustomers() {
         try {
             customerCombo.removeAllItems();
@@ -190,8 +184,6 @@ public class RentalManagement extends JFrame {
             showDatabaseError(ex);
         }
     }
-
-    // Load available book titles into the dropdown
     private void loadBooks() {
         try {
             bookCombo.removeAllItems();
@@ -209,7 +201,6 @@ public class RentalManagement extends JFrame {
         }
     }
 
-    // Rent a book
     private void rentBook() {
 
         String customerName =
@@ -262,7 +253,7 @@ public class RentalManagement extends JFrame {
                     + "Customer: " + customerName + "\n"
                     + "Book: " + bookTitle + "\n"
                     + "Rental duration: " + days + " days\n"
-                    + "Rental charge: ₹" + (days * 20.0)
+                    + "Rental charge will be calculated when the book is returned."
             );
 
             clearFields();
@@ -284,7 +275,6 @@ public class RentalManagement extends JFrame {
         }
     }
 
-    // Return the selected active rental
     private void returnBook() {
 
         int selectedRow = rentalTable.getSelectedRow();
@@ -341,7 +331,6 @@ public class RentalManagement extends JFrame {
         }
     }
 
-    // Display all rental records
     private void loadRentals() {
         try {
             tableModel.setRowCount(0);
@@ -369,7 +358,6 @@ public class RentalManagement extends JFrame {
         }
     }
 
-    // Clear rental duration
     private void clearFields() {
         rentalDaysField.setText("");
 
